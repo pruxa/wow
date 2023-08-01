@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: Wow quotes for you
+  description: For get the quote you should resolve a POW task
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+    description: Local server
+paths:
+    /quote:
+        get:
+          summary: Get a quote
+          description: Get a quote
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Quote'
+            '417':
+              description: Bad request
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Error'
+    /challenge:
+        get:
+          summary: Get a challenge
+          description: Get a challenge
+          responses:
+            '200':
+              description: OK
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Job'
+components:
+  schemas:
+    Quote:
+      type: object
+      properties:
+        quote:
+          type: string
+          description: The quote
+    Job:
+      type: object
+      properties:
+        challenge:
+          type: string
+          description: The challenge
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: The error
+
+
+
+  
